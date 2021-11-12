@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { Counter } from './Counter';
 import './CurrentQuestion.css'; // imported CSS
 
 import { quiz } from '../reducers/quiz';
 import { Summary } from './Summary'; // 👈 here is the import of Summary.js -> se line 33
-import { Scores } from './Scores';
+import {} from './Counter';
 
 export const CurrentQuestion = () => {
   const question = useSelector(
@@ -65,9 +65,11 @@ export const CurrentQuestion = () => {
       <div className='question-progress'>
         <p className='counter'>{question.id} / 5</p>
       </div>
-      <div>
-        <Scores />
-      </div>
+      {answer && (
+        <div>
+          <Counter />
+        </div>
+      )}
     </>
   );
 };

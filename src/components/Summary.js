@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { quiz } from 'reducers/quiz';
-import { Scores } from './Scores';
 
 import './Summary.css';
 
@@ -23,11 +22,6 @@ export const Summary = () => {
     <section className='summary'>
       <h3>You completed the quiz!</h3>
       <p>{`You scored ${CheckAnswers} out of 5 correct answers`}</p>
-      {
-        <p>
-          <Scores />
-        </p>
-      }
       <button className='restart-button' onClick={restart}>
         Restart quiz
       </button>
