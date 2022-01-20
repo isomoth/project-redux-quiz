@@ -42,16 +42,24 @@ export const CurrentQuestion = () => {
   };
 
   const quizImage = () => {
-    if (question.id === 1) {
-      return grace;
-    } else if (question.id === 2) {
-      return joan;
-    } else if (question.id === 3) {
-      return kath;
-    } else if (question.id === 4) {
-      return ada;
-    } else if (question.id === 5) {
-      return hedy;
+    switch (question.id) {
+      case 1:
+        return grace;
+      //break;
+      case 2:
+        return joan;
+      //break;
+      case 3:
+        return kath;
+      //break;
+      case 4:
+        return ada;
+      //break;
+      case 5:
+        return hedy;
+      //break;
+      default:
+        console.log('error handling!');
     }
   };
 
@@ -60,27 +68,27 @@ export const CurrentQuestion = () => {
   };
 
   // 👇 Here is the selected quizOver that executes when al Qs are answered.
-  if (quizOver === true) {
+  if (quizOver) {
     return <Summary />;
   }
 
   return (
     <>
-      <div className="question-wrapper">
+      <div className='question-wrapper'>
         <h2>
-          <span className="quiz-counter">{question.id} / 5 </span>
+          <span className='quiz-counter'>{question.id} / 5 </span>
           {question.questionText}
         </h2>
         <img
-          className="quiz-pic"
+          className='quiz-pic'
           src={quizImage()}
-          alt="great woman in computer science"
+          alt='great woman in computer science'
         />
       </div>
-      <div className="button-wrapper">
+      <div className='button-wrapper'>
         {question.options.map((item, index) => (
           <button
-            className="option-buttons"
+            className='option-buttons'
             key={item}
             onClick={() => onAnswerSubmit(question.id, index)}
           >
@@ -90,20 +98,20 @@ export const CurrentQuestion = () => {
       </div>
 
       {answer && (
-        <div className="isCorrect-Next">
-          <button className="next-button" onClick={() => onNextButtonClick()}>
+        <div className='isCorrect-Next'>
+          <button className='next-button' onClick={() => onNextButtonClick()}>
             <p>
-              <span className="align">
+              <span className='align'>
                 {' '}
                 {`This is ${answer.isCorrect ? 'correct!' : 'wrong'}`}
               </span>
-              <i className="fas fa-angle-right"></i>
+              <i className='fas fa-angle-right'></i>
             </p>
           </button>
         </div>
       )}
 
-      <div className="question-progress">
+      <div className='question-progress'>
         {/* The current score is shown here: */}
         <p>Score: {score}</p>
       </div>
